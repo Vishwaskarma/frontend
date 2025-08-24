@@ -918,7 +918,7 @@ const CategoryPageContent = () => {
     return (
       <div 
         onClick={handleProductClick}
-        className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:scale-105 cursor-pointer"
+        className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:scale-105 cursor-pointer font-sans"
       >
         {/* Image Container */}
         <div className="relative overflow-hidden bg-gray-50">

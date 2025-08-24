@@ -18,7 +18,7 @@ export default function SnacksBanner() {
   }, []);
 
   return (
-    <div className="relative bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 py-8 px-6 rounded-3xl overflow-hidden min-h-[400px]">
+    <div className=" font-sans relative bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 py-8 px-6 rounded-3xl overflow-hidden min-h-[400px]">
       
       {/* Dynamic geometric background */}
       <div className="absolute inset-0">

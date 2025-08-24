@@ -3,7 +3,7 @@ import React from 'react';
 
 const ElectronicsBanner = () => {
   return (
-    <div className="relative w-full min-h-[100vh] sm:min-h-[80vh] md:min-h-[70vh] lg:min-h-[600px] overflow-hidden bg-gradient-to-tr from-emerald-50 via-white to-teal-50">
+    <div className=" font-sans relative w-full min-h-[100vh] sm:min-h-[80vh] md:min-h-[70vh] lg:min-h-[600px] overflow-hidden bg-gradient-to-tr from-emerald-50 via-white to-teal-50">
       
       {/* Elegant flowing background shapes */}
       <div className="absolute inset-0">

@@ -164,7 +164,7 @@ const ElectronicsSlider = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white py-6 sm:py-8 lg:py-12 w-full font-sans">
+    <div className=" font-sans bg-gradient-to-br from-gray-50 to-white py-6 sm:py-8 lg:py-12 w-full font-sans">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 lg:mb-12">

@@ -47,7 +47,7 @@ const AuthSystem = () => {
 
   // Login Page
   const LoginPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center py-12 px-4">
+    <div className=" font-sans min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center py-12 px-4">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <div className="mx-auto h-16 w-16 bg-green-500 rounded-2xl flex items-center justify-center mb-6">

@@ -80,7 +80,7 @@ const Header = () => {
   return (
     <>
       {/* Premium Top Bar - Hidden on small screens */}
-      <div className="bg-gradient-to-r from-slate-900 via-green-900 to-slate-900 text-white py-2 relative overflow-hidden hidden sm:block">
+      <div className="bg-gradient-to-r from-slate-900 via-green-900 to-slate-900 text-white py-2 relative overflow-hidden hidden sm:block font-sans">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between text-xs">

@@ -24,7 +24,7 @@ const EcommerceFooter = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="font-['Work_Sans'] bg-gradient-to-b from-slate-50 to-slate-100">
+    <div className="font-['Work_Sans'] bg-gradient-to-b from-slate-50 to-slate-100 font-sans">
       {/* Responsive Newsletter Section */}
       <div className="bg-gradient-to-r from-green-600 to-emerald-600 py-8 sm:py-12 md:py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIvPgo8L2c+CjwvZz4KPHN2Zz4=')] opacity-20"></div>
