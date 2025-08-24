@@ -12,11 +12,10 @@ import sprite from '../../../public/drinks/sprite.png';
 const SnacksSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
+  const [isClient, setIsClient] = useState(false);
 
-  // Generate random rating (1 to 5) for each product
-  const getRandomRating = () => Math.floor(Math.random() * 5) + 1;
-
-  const beverages = [
+  // Beverages data without ratings initially
+  const beveragesData = [
     {
       "id": 1,
       "title": "Coca-Cola Original Taste",
@@ -59,10 +58,22 @@ const SnacksSlider = () => {
       "price": "₹30",
       "image": thumbsup
     }
-  ].map(product => ({
-    ...product,
-    rating: getRandomRating()
-  }));
+  ];
+
+  // Generate random rating (1 to 5) for each product
+  const getRandomRating = () => Math.floor(Math.random() * 5) + 1;
+
+  // Add ratings only on client side
+  const [beverages, setBeverages] = useState(beveragesData);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Add ratings only on client side to avoid hydration mismatch
+    setBeverages(beveragesData.map(product => ({
+      ...product,
+      rating: getRandomRating()
+    })));
+  }, []);
 
   // Handle responsive items per view
   useEffect(() => {
@@ -172,22 +183,24 @@ const SnacksSlider = () => {
                       </h3>
                       <p className="text-xs sm:text-sm text-gray-500 mb-2">{product.quantity}</p>
                       
-                      {/* Rating Display */}
-                      <div className="flex items-center text-yellow-400 mb-2 sm:mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <svg
-                            key={i}
-                            className={`w-3 h-3 sm:w-4 sm:h-4 ${i < product.rating ? 'fill-current' : 'fill-none stroke-current'} transition-colors duration-200`}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                        <span className="ml-1 text-xs text-gray-600">{product.rating}/5</span>
-                      </div>
+                      {/* Rating Display - Only show when on client side */}
+                      {isClient && (
+                        <div className="flex items-center text-yellow-400 mb-2 sm:mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className={`w-3 h-3 sm:w-4 sm:h-4 ${i < product.rating ? 'fill-current' : 'fill-none stroke-current'} transition-colors duration-200`}
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              stroke="currentColor"
+                              strokeWidth={1}
+                            >
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                          ))}
+                          <span className="ml-1 text-xs text-gray-600">{product.rating}/5</span>
+                        </div>
+                      )}
 
                       {/* Price and Add button */}
                       <div className="flex justify-between items-center mt-auto">
