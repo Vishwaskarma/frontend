@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation'; // Import useSearchParams
+import React, { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { 
   Filter, Search, Grid, List, ChevronDown, ChevronUp, X, Star, Heart,
@@ -9,9 +9,10 @@ import {
   Sparkles, Home, Gamepad2, Coffee, Leaf, Shirt, Grid3X3
 } from 'lucide-react';
 
-const CategoryPage = () => {
-  const searchParams = useSearchParams(); // Get query parameters
-  const initialCategory = searchParams.get('category') || 'electronics'; // Default to 'electronics' if no category is provided
+// This component contains all the main logic and will be rendered on client side
+const CategoryPageContent = () => {
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get('category') || 'electronics';
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [viewMode, setViewMode] = useState('grid');
   const [sortBy, setSortBy] = useState('popularity');
@@ -894,10 +895,10 @@ const CategoryPage = () => {
 
   // Fixed ProductCard component with proper navigation
   const ProductCard = ({ product }) => {
-const handleProductClick = () => {
-  // Navigate to product detail page with product ID
-  router.push(`/product/${product.id}`);
-};
+    const handleProductClick = () => {
+      // Navigate to product detail page with product ID
+      router.push(`/product/${product.id}`);
+    };
 
     const handleActionClick = (e, action) => {
       e.preventDefault();
@@ -1371,6 +1372,22 @@ const handleProductClick = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+// This is the main component that provides the loading fallback
+const CategoryPage = () => {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading products...</p>
+        </div>
+      </div>
+    }>
+      <CategoryPageContent />
+    </Suspense>
   );
 };
 
